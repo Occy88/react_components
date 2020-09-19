@@ -1,0 +1,21 @@
+// Make sure you set all padding; borders on this select and not the parent div.
+// this is mainly for :focus and tabbing.
+.Button {
+  width: inherit;
+  margin: 5px;
+  border-radius: 4px;
+  background-color: inherit;
+  display: flex;
+  padding: 0 5px 0 5px;
+  color: white;
+  font-weight: bold;
+  flex-direction: column;
+  align-content: center;
+  text-align: center
+}
+
+.Button:hover {
+  filter:brightness(120%);
+  cursor: pointer;
+}
+

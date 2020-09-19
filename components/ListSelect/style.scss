@@ -1,0 +1,38 @@
+// Make sure you set all padding, borders on this select and not the parent div.
+// this is mainly for :focus and tabbing.
+.ListSelect {
+  display: flex;
+  max-width: inherit;
+  min-width: inherit;
+  width: inherit;
+  height: 100%;
+  max-height: 50px;
+  margin: auto;
+
+  select {
+    height: 100%;
+    width: 100%;
+    border-style: solid;
+    border-width: 2px;
+    background-color: rgba(247, 247, 247, 0.6);
+    border-color: black;
+    border-radius: 5px;
+  }
+
+  .option {
+    background-color: white;
+  }
+
+  .option:hover {
+    background-color: whitesmoke;
+  }
+
+  select:hover {
+    background-color: rgb(235, 235, 235);
+  }
+
+  input {
+    max-width: 50px;
+    height: 100%;
+  }
+}

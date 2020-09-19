@@ -1,0 +1,14 @@
+// Make sure you set all padding; borders on this select and not the parent div.
+// this is mainly for :focus and tabbing.
+.ParticleBackground {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+
+  .background {
+    width: inherit;
+    height: inherit;
+    background-color: white;
+  }
+}
+

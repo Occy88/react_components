@@ -1,0 +1,71 @@
+// Make sure you set all padding, borders on this select and not the parent div.
+// this is mainly for :focus and tabbing.
+.Dropdown {
+  position: relative;
+  width: auto;
+  height: 100%;
+  display: flex;
+  background-color: inherit;
+  flex-direction: column;
+  justify-content: center;
+  border-color: black;
+
+  ::-webkit-scrollbar-button {
+    background-color: inherit;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: lightsalmon;
+  }
+
+  .dropdown-button {
+    max-width: 100%;
+    max-height: 100%;
+    background-color: inherit;
+    display: flex;
+    justify-content: center;
+  }
+
+  .dropdown-menu {
+    display: none;
+    background-color: inherit;
+
+  }
+
+  .dropdown-menu-show {
+    left: 0;
+    right: 0;
+    padding: 10px;
+    top: 100%;
+    width: auto;
+    max-height: 400px;
+    overflow-y: auto;
+    display: block;
+    flex-direction: column;
+    position: absolute;
+    background-color: inherit;
+    border-color: inherit;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 2px;
+
+
+  }
+
+
+  .dropdown-item {
+    background-color: inherit;
+
+    margin: 0;
+    padding: 0;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    height: auto;
+  }
+
+  .dropdown-item:hover {
+    background-color: inherit;
+  }
+}
+

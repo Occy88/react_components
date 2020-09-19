@@ -1,0 +1,19 @@
+//.Toolbar  {
+//  height: 100%;
+//  width:20px;
+//  background-color: lightgrey;
+//   .Button{
+//    display: none;
+//  }
+//}
+
+.DashboardGrid {
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+
+  .widget {
+    background-color: white;
+  }
+
+}

@@ -1,0 +1,20 @@
+const en = {
+    company: "company",
+    double_check: "Please double check you entries",
+    fail: "fail",
+    filter: "filter",
+    input: "input",
+    product_id_list: "product id list",
+    register_product_form:"Register Plastic To Delivery",
+    register_truck_delivery: "Register truck delivery",
+    search: "search",
+    select: "select",
+    submit: "submit",
+    success: "success",
+    supplier: "supplier",
+    supplierSite: "supplierSite",
+    quality: "quality",
+    quantity: "quantity",
+    weight: "weight kg",
+};
+export default en

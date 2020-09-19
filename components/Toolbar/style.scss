@@ -1,0 +1,61 @@
+//.Toolbar  {
+//  height: 100%;
+//  width:20px;
+//  background-color: lightgrey;
+//   .Button{
+//    display: none;
+//  }
+//}
+
+.Toolbar {
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-content: flex-start;
+  flex-direction: row;
+
+  .Listing {
+    display: flex;
+    width: 175px;
+    align-content: flex-start;
+    flex-direction: column;
+    height: inherit;
+    background-color: rgba(16, 67, 85, 1);
+    transition: opacity 1s, width 1s;
+  }
+
+  .hide {
+    height: 0;
+    opacity: 0;
+    width: 0;
+    transition: opacity 1s, width 1s;
+  }
+
+  .Toggle {
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    width: 25px;
+    height: 100%;
+    background-color: rgba(15, 81, 98, 0.5);
+  }
+
+  .Toggle:hover {
+    background-color: rgba(15, 81, 98, 1);
+  }
+
+  .Button {
+    font-size: 17px;
+    display: block;
+    text-align: left;
+    border-radius: 0;
+    width: inherit;
+    margin: 0;
+    padding: 10px 20px 5px 10px
+
+  }
+}

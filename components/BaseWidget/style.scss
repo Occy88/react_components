@@ -1,0 +1,11 @@
+// Make sure you set all padding; borders on this select and not the parent div.
+// this is mainly for :focus and tabbing.
+.BaseWidget {
+  height: inherit;
+  width: inherit;
+  padding: 8px;
+  .Button{
+    z-index: 999999;
+  }
+}
+

@@ -1,0 +1,54 @@
+// Make sure you set all padding, borders on this select and not the parent div.
+// this is mainly for :focus and tabbing.
+.MultiSelect {
+  display: flex;
+  flex-direction:column;
+  max-width: inherit;
+  min-width: inherit;
+  width: inherit;
+  height: 100%;
+  margin:auto;
+
+
+  select {
+    text-align: center;
+    height: 100%;
+    width:inherit;
+    border-style: solid;
+    border-width: 2px;
+    background-color: rgba(247, 247, 247, 0.6);
+    border-color: black;
+    border-radius: 5px;
+  }
+  .option_buttons{
+    display: flex;
+    justify-content: space-evenly;
+    button{
+      width:50%
+    }
+
+  }
+  .option {
+    background-color: white;
+  }
+  .selected{
+    background-color:lightskyblue;
+  }
+
+  .option:hover {
+    background-color: whitesmoke;
+  }
+
+  select:hover {
+    background-color: rgb(235, 235, 235);
+  }
+
+  input {
+    text-align: center;
+  }
+  .selection_area{
+    display:block;
+    width:100%;
+    height: auto;
+  }
+}
