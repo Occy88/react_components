@@ -2,7 +2,6 @@ import React from "react";
 import BaseWidget from '../BaseWidget'
 import WidgetHeader from '../WidgetHeader'
 import WidgetBody from '../WidgetBody'
-
 /**
  * An Example of a simple widget to be used in the grid.
  *

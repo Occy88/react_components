@@ -37,26 +37,29 @@ class Input extends React.Component {
      * @return {*}
      */
     render() {
-        return <div className={'Input'}>
-            <div className={'name'}>
-                {this.props.name}
-            </div>
-            {isBoolean(this.props.value) ?
-                <input
-                    type={this.props.type === null || this.props.type === undefined ? 'checkbox' : this.props.type}
-                    checked={this.props.value}
-                    onChange={(event) => this.onChange(event.target.checked)}
-                    placeholder={this.props.placeholder ? this.props.placeholder : lang.placeholder}
-                    value={this.props.name}
-                /> :
-                <input
-                    type={this.props.type === null || this.props.type === undefined ? 'text' : this.props.type}
-                    onChange={(event) => this.onChange(event.target.value)}
-                    placeholder={this.props.placeholder ? this.props.placeholder : lang.placeholder}
-                    value={this.props.value}
-                />}
+        let input = <input
+                type={this.props.type === null || this.props.type === undefined ? 'text' : this.props.type}
+                onChange={(event) => this.onChange(event.target.value)}
+                placeholder={this.props.placeholder ? this.props.placeholder : lang.placeholder}
+                value={this.props.value}
+        />
+        let inputBool = <input
+                type={this.props.type === null || this.props.type === undefined ? 'checkbox' : this.props.type}
+                checked={this.props.value}
+                onChange={(event) => this.onChange(event.target.checked)}
+                placeholder={this.props.placeholder ? this.props.placeholder : lang.placeholder}
+                value={this.props.name}
+        />
+        return (
+                <div className={'Input'}>
+                    <div className={'name'}>
+                        {this.props.name}
+                    </div>
+                    {isBoolean(this.props.value) ?
+                            inputBool :
+                            input}
 
-        </div>
+                </div>)
 
     }
 }

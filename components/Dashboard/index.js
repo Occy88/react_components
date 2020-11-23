@@ -129,7 +129,8 @@ export default class Dashboard extends React.Component {
                 <DashboardGrid
                     handleRemove={this.handleRemove}
                     handleCreate={this.handleCreate}
-                    componentDicts={this.state.componentDicts}/>
+                    componentDicts={this.state.componentDicts}
+                />
             </div>
         );
     }
