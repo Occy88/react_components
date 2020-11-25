@@ -30,8 +30,6 @@ export default class AceEditorConfig extends React.Component {
 
         ]
         this.name = "default name"
-
-        this.setState()
     }
 
     render() {
@@ -95,7 +93,7 @@ export default class AceEditorConfig extends React.Component {
                             value={this.props.config.setOptions.enableBasicAutocompletion}
                             name={'enableBasicAutocompletion'}
                             type={'checkbox'}
-                            onChange={(val) => this.props.setOptions.onChange({'setOptions': {...this.props.config.setOptions, ...{enableBasicAutocompletion: val}}})}
+                            onChange={(val) => this.props.onChange({'setOptions': {...this.props.config.setOptions, ...{enableBasicAutocompletion: val}}})}
                     />
                     <Input
                             value={this.props.config.setOptions.enableSnippets}

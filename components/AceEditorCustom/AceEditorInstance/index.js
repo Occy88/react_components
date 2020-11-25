@@ -18,6 +18,8 @@ import 'ace-builds/src-noconflict/theme-textmate'
 import 'ace-builds/src-noconflict/theme-solarized_dark'
 import 'ace-builds/src-noconflict/theme-solarized_light'
 import 'ace-builds/src-noconflict/theme-terminal'
+import 'ace-builds/src-noconflict/ext-language_tools'
+import 'ace-builds/src-noconflict/ext-spellcheck'
 import './style.scss'
 
 /**
@@ -33,7 +35,7 @@ export default class AceEditorInstance extends React.Component {
 
     render() {
         // console.log("ACE EDITOR: ")
-        console.log(this.props.config)
+        // console.log(this.props.config)
         return (
                 <AceEditor
                         placeholder={this.props.config.placeholder}
