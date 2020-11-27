@@ -36,8 +36,8 @@ export default class AceEditorCustom extends React.Component {
             },
             value: this.props.value
         })
-        console.log('instantiated ace example: ')
-        console.log(this.state.config)
+        // console.log('instantiated ace example: ')
+        // console.log(this.state.config)
         this.onToggle = this.onToggle.bind(this)
     }
 
