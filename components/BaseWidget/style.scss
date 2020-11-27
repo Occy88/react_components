@@ -4,8 +4,31 @@
   height: inherit;
   width: inherit;
   padding: 8px;
-  .Button{
-    z-index: 999999;
+
+  .relative {
+    position: relative;
+
+  }
+
+  .draggableArea {
+
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    z-index: 10;
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+  }
+
+  .nonDraggable {
+    width: 100%;
+    height: 100%;
+  }
+
+  .Button {
+    z-index: 100;
   }
 }
 

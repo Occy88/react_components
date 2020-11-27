@@ -16,12 +16,6 @@ export default class Toolbar extends React.Component {
         this.setState({expanded: !this.state.expanded});
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        // call onToggle after state is set and re-rendered.
-        if (prevState.expanded !== this.state.expanded) {
-            this.props.onToggle(1000);
-        }
-    }
 
     render() {
         let listing = <div key='list' className={classnames({
