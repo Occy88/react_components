@@ -35,16 +35,19 @@ export default class DashboardGrid extends React.Component {
                 <div className={'DashboardGrid'}>
 
                     <ResponsiveGridLayout
-                            rowHeight={screen.height / 10}
-                            breakpoints={{res: 4}}
-                            cols={{res: 4}}
+                            useCSSTransforms={true}
+                            transformScale={1}
+                            rowHeight={100}
+                            breakpoints={{res: 40}}
+                            cols={{res: 100}}
+                            // measureWidthBeforeMount={true}
                             compactType={'vertical'}
                             draggableCancel={'.nonDraggable'}
-                            autoSize={false}
-                            onResizeStop={()=>window.dispatchEvent(new Event('resize'))}
+                            onResizeStop={() => window.dispatchEvent(new Event('resize'))}
                             onWidthChange={() => {
                                 return null
                             }}
+                            isBounded={false}
                             // onLayoutChange={this.onLayoutChange}
                             // onBreakpointChange={this.onBreakpointChange}
                             {...this.props}

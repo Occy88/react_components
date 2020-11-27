@@ -1,6 +1,7 @@
 import React from 'react';
 import ListSelect from "../../ListSelect";
 import Input from "../../Input";
+import './style.scss'
 
 /**
  *  Manages an instance of code for editing only

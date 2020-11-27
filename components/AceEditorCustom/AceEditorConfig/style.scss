@@ -1,5 +1,15 @@
 .AceEditorConfig {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
+  height: 100%;
+  width: 250px;
+
+  input {
+    width: auto;
+    max-width: 100px;
+    margin: auto 0 auto auto;
+    text-align: end;
+
+  }
 }

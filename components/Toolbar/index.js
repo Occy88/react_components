@@ -27,7 +27,6 @@ export default class Toolbar extends React.Component {
         let listing = <div key='list' className={classnames({
             'Listing': true,
             'hide': !this.state.expanded,
-            'reverse': this.state.reverse
         })}>
             {this.state.expanded ?
                     this.props.component : null
@@ -39,10 +38,16 @@ export default class Toolbar extends React.Component {
         </div>
         let comb = !this.state.reverse ? [listing, toggle] : [toggle, listing]
         return (
+                <div className={'Toolbar'}>
+                    <div className={classnames({
+                        'container': true,
+                        'reverse': this.props.reverse
+                    })}>
+                        {comb}
 
-                <div className='Toolbar'>
-                    {comb}
+                    </div>
                 </div>
+
         );
     }
 }

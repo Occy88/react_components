@@ -7,23 +7,35 @@
 //  }
 //}
 
+
 .Toolbar {
-  min-height: 100%;
-  height: auto;
-  width: auto;
-  display: flex;
-  align-content: flex-start;
-  flex-direction: row;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  position: relative;
+  width: 0;
+  height: 100%;
+
+  .container {
+    z-index: 999999;
+    position: absolute;
+    min-height: 100%;
+    min-width: 20px;
+    height: 100%;
+    width:auto;
+    display: flex;
+    align-content: flex-start;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+
+  }
+
 
   .Listing {
     display: flex;
     max-width: inherit;
     width: 100%;
+    overflow-y: scroll;
     align-content: flex-start;
     flex-direction: column;
-    height: 100%;
     background-color: whitesmoke;
     transition: opacity 1s, width 1s;
     min-width: 0;
@@ -37,7 +49,6 @@
   }
 
   .Toggle {
-    z-index: 999999;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,14 +56,14 @@
     font-weight: bold;
     color: white;
     width: 25px;
-    height: 100%;
-    background-color: lightgrey;
+    background-color: rgba(178, 178, 178, 0.31);
     min-width: 20px;
   }
 
   .Toggle:hover {
     background-color: darkgrey
   }
+
 
   .Button {
     font-size: 17px;
@@ -61,11 +72,17 @@
     border-radius: 0;
     width: inherit;
     margin: 0;
-    background-color:inherit;
+    background-color: inherit;
     padding: 10px 20px 5px 10px
 
   }
+
+  .reverse {
+    right: 0
+  }
+
+  .Listing::-webkit-scrollbar {
+    display: none
+  }
 }
-.Toolbar::-webkit-scrollbar{
-  display:none
-}
+

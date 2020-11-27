@@ -125,13 +125,17 @@ export default class Dashboard extends React.Component {
 
     render() {
         return (
-            <div className='Dashboard'>
-                <DashboardGrid
-                    handleRemove={this.handleRemove}
-                    handleCreate={this.handleCreate}
-                    componentDicts={this.state.componentDicts}
-                />
-            </div>
+                <div className='Dashboard'>
+                    <div className={'container'}>
+                        <DashboardGrid
+                                handleRemove={this.handleRemove}
+                                handleCreate={this.handleCreate}
+                                componentDicts={this.state.componentDicts}
+                        />
+                    </div>
+
+                </div>
+
         );
     }
 
