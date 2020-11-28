@@ -8,14 +8,14 @@
 //}
 
 .DashboardGrid {
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
 
   .widget {
+    border: none;
     background-color: white;
-    border-color: lightgrey;
-    border-style: solid;
-    border-width: 2px;
+    padding: 0;
+    margin: 0;
   }
 
 }
