@@ -19,7 +19,15 @@ class BaseWidget extends React.Component {
         };
         const element = React.createElement(this.props.componentDict.component, Object.assign({}, this.props, this.props.componentDict.props));
         // Create the interior of any given widget to be displayed.
-        return (
+        return ([
+                <div className={'remove'}>
+                    <Button
+                        onClick={() => {
+                            this.props.handleRemove(this.props.componentDict.id)
+                        }}
+                        image={STATIC_URL + thin_black_cross}
+                        style={button_style}>
+                    </Button></div>,
                 <div className={'BaseWidget'}>
                     <div className={'relative'}>
                         <div className={'draggableArea'}>
@@ -27,19 +35,11 @@ class BaseWidget extends React.Component {
                         </div>
                     </div>
 
-                    <Button
-                            className="remove"
-                            onClick={() => {
-                                this.props.handleRemove(this.props.componentDict.id)
-                            }}
-                            image={STATIC_URL + thin_black_cross}
-                            style={button_style}>
-                    </Button>
+
                     <div className={'nonDraggable'}>
                         {element}
-
                     </div>
-                </div>
+                </div>]
         );
     };
 }

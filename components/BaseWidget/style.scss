@@ -3,7 +3,8 @@
 .BaseWidget {
   height: inherit;
   width: inherit;
-  padding: 8px;
+  padding: 6px 8px 8px 6px;
+  margin: 0;
 
   .relative {
     position: relative;
@@ -26,9 +27,22 @@
     width: 100%;
     height: 100%;
   }
-
-  .Button {
-    z-index: 100;
-  }
 }
 
+.remove {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  float: right;
+  width: 0;
+  height: 0;
+  z-index: 100;
+
+  .Button {
+    positon: absolute;
+    padding: 0;
+    margin: 2px;
+    max-width: 10px;
+  }
+}

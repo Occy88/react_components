@@ -6,6 +6,8 @@ import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import findSpace from "../../js/packing";
 import uuid from 'uuid'
+import ScrollContainer from 'react-indiana-drag-scroll'
+import Button from "../Button";
 
 /**
  * High level component that handles the connection between the toolbar and the grid.
@@ -20,10 +22,15 @@ export default class Dashboard extends React.Component {
         super(props);
         this.state = {
             componentDicts: [],
+            zoom: 1
+
         };
 
         this.handleRemove = this.handleRemove.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
+        this.zoom = this.zoom.bind(this)
+        this.dashboard = React.createRef()
+
     }
 
     /**
@@ -61,7 +68,7 @@ export default class Dashboard extends React.Component {
                 w: width,
                 props: props,
                 id: id
-            })
+            }),
         })
     }
 
@@ -112,6 +119,13 @@ export default class Dashboard extends React.Component {
         setTimeout(() => window.dispatchEvent(new Event('resize')), time);
     }
 
+    zoom(val) {
+        this.setState({
+            zoom: this.state.zoom + val
+        })
+        console.log(this.state.zoom)
+    }
+
     /**
      * Function to remove a component from the grid
      * @param {string} id the unique id of the component.
@@ -125,18 +139,27 @@ export default class Dashboard extends React.Component {
 
     render() {
         return (
-                <div className='Dashboard'>
-                    <div className={'container'}>
-                        <DashboardGrid
-                                handleRemove={this.handleRemove}
-                                handleCreate={this.handleCreate}
-                                componentDicts={this.state.componentDicts}
-                        />
+            <div className='Dashboard'>
+                <div className={'zoomContainer'}>
+                    <div className={'zoomButtons'}>
+                        <Button text={'+'} onClick={() => this.zoom(0.1)}/>
+                        <Button text={'-'} onClick={() => this.zoom(-0.1)}/>
                     </div>
-
                 </div>
+                <ScrollContainer className="scroll-container"
+                                 ignoreElements={'.widget'}>
 
+                    <DashboardGrid
+                        ref={this.dashboard} style={{
+                        zoom: this.state.zoom
+                    }}
+                        handleRemove={this.handleRemove}
+                        handleCreate={this.handleCreate}
+                        componentDicts={this.state.componentDicts}
+                    />
+                </ScrollContainer>
+
+            </div>
         );
     }
-
 }

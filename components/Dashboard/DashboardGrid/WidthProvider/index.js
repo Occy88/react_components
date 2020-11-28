@@ -12,6 +12,7 @@ export default function WidthProvider(WrappedComponent) {
             super(props);
             this.state = {
                 width: 10000,
+                height:10000,
                 mounted: false,
             };
             this.onWindowResize = this.onWindowResize.bind(this);
@@ -41,8 +42,8 @@ export default function WidthProvider(WrappedComponent) {
             if (!this.state.mounted) return;
             // eslint-disable-next-line react/no-find-dom-node
             const node = ReactDOM.findDOMNode(this); // Flow casts this to Text | Element
-            if (node instanceof HTMLElement)
-                this.setState({width: 10000});
+            // if (node instanceof HTMLElement)
+            //     this.setState({width: 10000});
         };
 
         render() {
