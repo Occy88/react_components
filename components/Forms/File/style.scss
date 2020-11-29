@@ -1,0 +1,25 @@
+// Make sure you set all padding; borders on this select and not the parent div.
+// this is mainly for :focus and tabbing.
+.File {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  max-width: inherit;
+
+  .name {
+    margin: 5px;
+    width: auto;
+    height: auto;
+    min-width: 50px;
+    overflow: hidden;
+  }
+
+  input {
+    max-width: 200px;
+    min-width: 20px;
+    width: auto;
+    height: auto;
+    margin: auto 0 auto auto;
+  }
+}
+
