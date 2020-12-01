@@ -35,7 +35,6 @@ class BaseWidget extends React.Component {
                         </div>
                     </div>
 
-
                     <div className={'nonDraggable'}>
                         {element}
                     </div>

@@ -13,7 +13,7 @@ export default class IdleTimerCustom extends React.Component {
     }
 
     componentDidMount() {
-        this.props.setResetCalback(this.userReset.bind(this))
+        this.props.resetFunction(this.userReset.bind(this))
         this.startTimer()
     }
     startTimer(){
