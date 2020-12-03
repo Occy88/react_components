@@ -7,7 +7,6 @@ import {makeStyles} from '@material-ui/core/styles';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
-let lang = languages[document.documentElement.lang];
 
 /**
  *  takes a list of any html items

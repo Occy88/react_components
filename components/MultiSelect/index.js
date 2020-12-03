@@ -3,7 +3,6 @@ import './style.scss'
 import languages from "./lang.js"
 import Dropdown from "../Dropdown";
 
-let lang = languages[document.documentElement.lang];
 
 /**
  *  takes a list of objects which have an str field and an id
@@ -231,6 +230,8 @@ export default class MultiSelect extends React.Component {
      * @return {*}
      */
     render() {
+        let lang = languages[document.documentElement.lang];
+
         if (!this.state.temp_list) return <div style={{display: 'inline-block'}}>N/A</div>;
         return (
             <div className={'MultiSelect'}>

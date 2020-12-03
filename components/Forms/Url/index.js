@@ -2,7 +2,6 @@ import React from 'react';
 import './style.scss'
 import languages from "./lang.js"
 
-let lang = languages[document.documentElement.lang];
 
 /**
  *  takes a list of any html items
@@ -21,6 +20,8 @@ class Url extends React.Component {
     }
 
     render() {
+        let lang = languages[document.documentElement.lang];
+
         let field = <input
             type={'url'}
             onChange={(event) => this.props.onChange(event.target.value)}

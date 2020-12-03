@@ -13,7 +13,6 @@ import IdleTimerCustom from "../../IdleTimerCustom";
 import LoadingIndicator from "../../LoadingIndicator";
 import Button from "../../Button";
 
-let lang = languages[document.documentElement.lang];
 /**
  * Views a post only
  */
