@@ -9,6 +9,7 @@
   flex-direction: column;
   justify-content: center;
   border-color: black;
+  z-index: 100;
 
   ::-webkit-scrollbar-button {
     background-color: inherit;
