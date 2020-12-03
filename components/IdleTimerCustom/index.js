@@ -2,6 +2,12 @@ import React from "react";
 import './style.scss'
 
 export default class IdleTimerCustom extends React.Component {
+    /**
+     * @param props.resetFunction {()=>callWhenUserActive}
+     * @param props.onIdle {function}
+     * @param props.timeout {number}
+     * @param props.throttle {number}
+     */
     constructor(props) {
         super(props)
         console.log(this.props.node)
@@ -16,30 +22,32 @@ export default class IdleTimerCustom extends React.Component {
         this.props.resetFunction(this.userReset.bind(this))
         this.startTimer()
     }
-    startTimer(){
+
+    startTimer() {
         this.setState({
-            interval:setInterval(this.addToTimer.bind(this), this.props.throttle),
+            interval: setInterval(this.addToTimer.bind(this), this.props.throttle),
             timer: 0,
             reset: true
         })
     }
-    stopTimer(){
+
+    stopTimer() {
         clearInterval(this.state.interval)
     }
+
     userReset() {
-        if(!this.state.reset){
+        if (!this.state.reset) {
             this.startTimer()
-        }
-        else {
+        } else {
             this.setState({
-            timer: 0,
-        })
+                timer: 0,
+            })
         }
 
     }
 
     addToTimer() {
-        // console.log(this.state.timer)
+        console.log(this.state.timer, this.state.timeout)
         let total = this.state.timer + this.props.throttle
         if (total > this.props.timeout && this.state.reset) {
             console.log('calling IDLe')

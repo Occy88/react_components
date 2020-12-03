@@ -3,7 +3,6 @@ import './style.scss'
 import languages from "./lang.js"
 import Image from "react-bootstrap/Image";
 
-let lang = languages[document.documentElement.lang];
 
 /**
  *  takes a list of any html items

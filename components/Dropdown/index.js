@@ -7,7 +7,6 @@ import {withRouter} from 'react-router-dom';
 import {isMobile} from 'react-device-detect';
 import OutsideAlerter from "../OutsiteAlerter";
 
-let lang = languages[document.documentElement.lang];
 
 /**
  *  takes a list of any html items

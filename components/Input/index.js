@@ -3,7 +3,6 @@ import './style.scss'
 import languages from "./lang.js"
 import {isBoolean} from "underscore";
 
-let lang = languages[document.documentElement.lang];
 
 /**
  *  takes a list of any html items
@@ -37,9 +36,11 @@ class Input extends React.Component {
      * @return {*}
      */
     render() {
+        let lang = languages[document.documentElement.lang];
+
         let input = <input
                 type={this.props.type === null || this.props.type === undefined ? 'text' : this.props.type}
-                onChange={(event) => this.onChange(event.target.value)}
+                onChange={(event) => this.props.onChange(event.target.value)}
                 placeholder={this.props.placeholder ? this.props.placeholder : lang.placeholder}
                 value={this.props.value}
         />

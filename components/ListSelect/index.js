@@ -3,7 +3,6 @@ import './style.scss'
 import languages from "./lang.js"
 import PropTypes from 'prop-types'
 
-let lang = languages[document.documentElement.lang];
 
 
 /**
@@ -202,6 +201,8 @@ class ListSelect extends React.Component {
      * @return {*}
      */
     render() {
+        let lang = languages[document.documentElement.lang];
+
         if (!this.state.temp_list) return <div style={{display: 'inline-block'}}>N/A</div>;
         let select =
             <select value={this.state.selected_option} ref={this.options}
