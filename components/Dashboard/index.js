@@ -5,7 +5,7 @@ import _ from 'underscore'
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import findSpace from "../../js/packing";
-import uuid from 'uuid'
+import {v4 as uuid} from 'uuid'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import Button from "../Button";
 
@@ -17,7 +17,14 @@ import Button from "../Button";
 export default class Dashboard extends React.Component {
     // State
     // Current createdWidgets on the grid
-
+    /**
+     *
+     * @param props
+     * @param props.grid_config {dict} {
+     *                      vertical_compact: True,
+     *                      row_height: 100,
+     *                   }
+     */
     constructor(props) {
         super(props);
         this.state = {
@@ -115,6 +122,7 @@ export default class Dashboard extends React.Component {
     // }
 
     scale(time) {
+
         time = time ? time : 0;
         setTimeout(() => window.dispatchEvent(new Event('resize')), time);
     }
@@ -139,27 +147,26 @@ export default class Dashboard extends React.Component {
 
     render() {
         return (
-            <div className='Dashboard'>
-                <div className={'zoomContainer'}>
-                    <div className={'zoomButtons'}>
-                        <Button text={'+'} onClick={() => this.zoom(0.1)}/>
-                        <Button text={'-'} onClick={() => this.zoom(-0.1)}/>
+                <div className='Dashboard'>
+                    <div className={'zoomContainer'}>
+                        <div className={'zoomButtons'}>
+                            <Button text={'+'} onClick={() => this.zoom(0.1)}/>
+                            <Button text={'-'} onClick={() => this.zoom(-0.1)}/>
+                        </div>
                     </div>
+                    <ScrollContainer className="scroll-container"
+                                     ignoreElements={'.widget'}>
+                        <DashboardGrid
+                                ref={this.dashboard}
+                                style={{transform: "scale(" + this.state.zoom + ")"}}
+                                grid_config={this.props.grid_config ? {...this.props.grid_config, ...{scale: this.state.zoom}} : {scale: this.state.zoom}}
+                                handleRemove={this.handleRemove}
+                                handleCreate={this.handleCreate}
+                                componentDicts={this.state.componentDicts}
+                        />
+                    </ScrollContainer>
+
                 </div>
-                <ScrollContainer className="scroll-container"
-                                 ignoreElements={'.widget'}>
-
-                    <DashboardGrid
-                        ref={this.dashboard} style={{
-                        zoom: this.state.zoom
-                    }}
-                        handleRemove={this.handleRemove}
-                        handleCreate={this.handleCreate}
-                        componentDicts={this.state.componentDicts}
-                    />
-                </ScrollContainer>
-
-            </div>
         );
     }
 }

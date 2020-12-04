@@ -14,6 +14,7 @@ export default function WidthProvider(WrappedComponent) {
                 width: 10000,
                 mounted: false,
             };
+            console.log("SET WIDTH: ", this.state.width)
             this.onWindowResize = this.onWindowResize.bind(this);
         }
 
@@ -33,7 +34,7 @@ export default function WidthProvider(WrappedComponent) {
             this.setState({
                 mounted: false
             });
-            // window.removeEventListener("resize", this.onWindowResize);
+            window.removeEventListener("resize", this.onWindowResize);
         }
 
         onWindowResize() {
@@ -41,8 +42,10 @@ export default function WidthProvider(WrappedComponent) {
             if (!this.state.mounted) return;
             // eslint-disable-next-line react/no-find-dom-node
             const node = ReactDOM.findDOMNode(this); // Flow casts this to Text | Element
-            if (node instanceof HTMLElement)
+            if (node instanceof HTMLElement) {
                 this.setState({width: 10000});
+            }
+            console.log("SET WIDTH ", this.state.width)
         };
 
         render() {
