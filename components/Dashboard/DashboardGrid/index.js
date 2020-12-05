@@ -12,7 +12,7 @@ export default class DashboardGrid extends React.Component {
         this.state = {
             width: 10000
         }
-
+        this.Grid = React.createRef()
     }
 
     //
@@ -30,35 +30,47 @@ export default class DashboardGrid extends React.Component {
     // }
 
     render() {
+        let scale = this.props.grid_config.scale
+        // let d = 1 - scale
+        // d /= 2
+        // scale = 1 - d
         console.log("rendering: ", this.props.componentDicts)
-        console.log("scale:", this.props.s)
+        console.log("scale:", this.props.grid_config.scale)
+        console.log("GRID: ", this.Grid.current ? this.Grid.current : "NO GRID")
         return (
+            <div className={'DashboardGrid'}
+                 style={{
+                     width: this.state.width + 'px',
+                     // zoom: this.props.grid_config.scale,
+                     transform: "scale(" + this.props.grid_config.scale + ")"
+                 }}>
                 <ResponsiveGridLayout
-                        width={1000}
-                        useCSSTransforms={true}
-                        rowHeight={this.props.grid_config.row_height ? this.props.grid_config.row_height : 100}
-                        breakpoints={{res: 40}}
-                        cols={{res: this.props.grid_config.row_height ? this.props.grid_config.row_height : 100}}
-                        measureWidthBeforeMount={true}
-                        compactType={'vertical'}
-                        verticalCompact={this.props.grid_config.vertical_compact ? true : false}
-                        draggableCancel={'.nonDraggable'}
-                        onResizeStop={() => window.dispatchEvent(new Event('resize'))}
-                        // onWidthChange={() => {
-                        //     return null
-                        // }}
-                        autoSize={true}
-                        transformScale={this.props.grid_config.scale}
-                        margin={this.props.grid_config.margin ? this.props.grid_config.margin : [10, 10]}
-                        // preventCollision={true}
-                        // isBounded={false}
-                        // onLayoutChange={this.onLayoutChange}
-                        // onBreakpointChange={this.onBreakpointChange}
-                        {...this.props}
+                    ref={this.Grid}
+                    width={1000}
+                    useCSSTransforms={true}
+                    rowHeight={this.props.grid_config.row_height ? this.props.grid_config.row_height : 100}
+                    breakpoints={{res: 40}}
+                    cols={{res: this.props.grid_config.row_height ? this.props.grid_config.row_height : 100}}
+                    measureWidthBeforeMount={true}
+                    compactType={'vertical'}
+                    verticalCompact={this.props.grid_config.vertical_compact ? true : false}
+                    draggableCancel={'.nonDraggable'}
+                    onResizeStop={() => window.dispatchEvent(new Event('resize'))}
+                    // onWidthChange={() => {
+                    //     return null
+                    // }}
+                    autoSize={true}
+                    transformScale={scale}
+                    margin={this.props.grid_config.margin ? this.props.grid_config.margin : [10, 10]}
+                    // preventCollision={true}
+                    isBounded={false}
+                    // onLayoutChange={this.onLayoutChange}
+                    // onBreakpointChange={this.onBreakpointChange}
+                    {...this.props}
                 >
                     {this.props.componentDicts.map((componentDict, index) => {
                         return <div className={'widget'}
-                                // itemevation={3}
+                            // itemevation={3}
                                     key={componentDict.id}
                                     data-grid={{
                                         i: componentDict.id,
@@ -75,6 +87,8 @@ export default class DashboardGrid extends React.Component {
                         </div>
                     })}
                 </ResponsiveGridLayout>
+            </div>
+
         );
     }
 }

@@ -147,26 +147,26 @@ export default class Dashboard extends React.Component {
 
     render() {
         return (
-                <div className='Dashboard'>
-                    <div className={'zoomContainer'}>
-                        <div className={'zoomButtons'}>
-                            <Button text={'+'} onClick={() => this.zoom(0.1)}/>
-                            <Button text={'-'} onClick={() => this.zoom(-0.1)}/>
-                        </div>
+            <div className='Dashboard'>
+                <div className={'zoomContainer'}>
+                    <div className={'zoomButtons'}>
+                        <Button text={'+'} onClick={() => this.zoom(0.1)}/>
+                        <Button text={'-'} onClick={() => this.zoom(-0.1)}/>
                     </div>
-                    <ScrollContainer className="scroll-container"
-                                     ignoreElements={'.widget'}>
-                        <DashboardGrid
-                                ref={this.dashboard}
-                                style={{transform: "scale(" + this.state.zoom + ")"}}
-                                grid_config={this.props.grid_config ? {...this.props.grid_config, ...{scale: this.state.zoom}} : {scale: this.state.zoom}}
-                                handleRemove={this.handleRemove}
-                                handleCreate={this.handleCreate}
-                                componentDicts={this.state.componentDicts}
-                        />
-                    </ScrollContainer>
-
                 </div>
+                <ScrollContainer className="scroll-container"
+                                 ignoreElements={'.widget'}>
+                    <DashboardGrid
+                        ref={this.dashboard}
+
+                        grid_config={this.props.grid_config ? {...this.props.grid_config, ...{scale: this.state.zoom}} : {scale: this.state.zoom}}
+                        handleRemove={this.handleRemove}
+                        handleCreate={this.handleCreate}
+                        componentDicts={this.state.componentDicts}
+                    />
+                </ScrollContainer>
+
+            </div>
         );
     }
 }
