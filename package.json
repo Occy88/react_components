@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Tools I made",
   "main": "index.js",
-
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
     "@babel/core": "*",
@@ -63,10 +62,16 @@
     "uuid": "^8.3.1",
     "vis": "*"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Occy88/react_components.git"
+  },
+  "scripts": {
+    "start": "nodemon -w webpack.config.js -x webpack serve --env mode",
+    "build": "webpack",
+    "postinstall": "patch-package",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update:packages": "node wipe-dependencies.js && rm -rf node_modules && npm update --save-dev && npm update --save"
   },
   "author": "Octavio",
   "license": "ISC",
