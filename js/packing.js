@@ -1,51 +1,52 @@
 /**
  * This function returns a position for a potential rectangle in a 2d grid.
  * @param itemsInGrid list of dicts: [{x:int,y:int,w:int,h:int}] representing current itemsInGrid in the grid
- * @param gridHeight (max height of available space)
- * @param gridWidth  (max width fo available space)
- * @param width (width of element to pack)
- * @param height (height of element to pack)
+ * @param gh (max ch of available space)
+ * @param gw  (max cw fo available space)
+ * @param cw (cw of element to pack)
+ * @param ch (ch of element to pack)
  * @return {number[]} (pos(x,y)
  */
-function findSpace(itemsInGrid, gridHeight, gridWidth, width, height) {
-    // identify max_width,max_height
-    const max_width = gridWidth;
-    const max_height = gridHeight;
+function findSpace(itemsInGrid, gh, gw, cw, ch) {
+    // identify max_cw,max_ch
+    if (itemsInGrid.length <= 0) {
+        console.log("NO ITEMS returning 0,0")
+        return [0, 0]
+    }
+    console.log("FINDING SPACE ")
+    console.log("======================")
+    console.log("componnents: ", itemsInGrid)
+    console.log("grid cw:", gw)
+    console.log("grid ch:", gh)
     //    go linearly
+
     let pX = 0;
     let pY = 0;
-    let found = true;
+    let found = false;
     let y = 0;
     let x = 0;
-    while (y < max_height) {
-        while (x < max_width) {
-            for (let comp of itemsInGrid) {
-                let w = comp.w;
-                let h = comp.h;
-                let xC = comp.x;
-                let yC = comp.y;
-                if (((pX + width >= xC && pX < xC) || (pX + width >= xC + w && pX < xC + w)) ||
-                    ((pY + height >= yC && pY < yC) || (pY + height >= yC + h && pY < yC + h))) {
-                    if (xC + w + width > max_width) {
-                        pX = 0;
-                        pY = yC + h;
-                    } else {
-                        pX = xC + w;
+    while (x < gw) {
+        while (y < gh) {
+            if (is_free(x, y, cw, ch, itemsInGrid)) {
+                return [x, y]
+            }
 
-                    }
-                    found = true;
-                    x = pX + width + 1;
-                    y = pY + height + 1;
-                }
-            }
-            if (found) {
-                return [pX, pY]
-            }
-            x += 1
+            y += 1
         }
-        y += 1
+        x += 1
     }
     return [pX, pY]
+}
+
+function is_free(x, y, w, h, items) {
+    for (let c of items) {
+        if (x + w > c.x && c.x + c.w > x) {
+            if (y + h > c.y && c.y + c.h > y) {
+                return false
+            }
+        }
+    }
+    return true
 }
 
 export default findSpace

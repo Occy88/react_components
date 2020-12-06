@@ -59,6 +59,7 @@ export default class DashboardGrid extends React.Component {
                     // onWidthChange={() => {
                     //     return null
                     // }}
+                    onLayoutChange={this.props.onLayoutChange}
                     autoSize={true}
                     transformScale={scale}
                     margin={this.props.grid_config.margin ? this.props.grid_config.margin : [10, 10]}

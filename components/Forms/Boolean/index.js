@@ -36,7 +36,6 @@ class Boolean extends React.Component {
         return (
             <div className={'Boolean'}>
                 {this.props.read_only ? field : [name, field]}
-
             </div>)
     }
 }

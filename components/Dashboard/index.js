@@ -62,9 +62,10 @@ export default class Dashboard extends React.Component {
         }
         //if  position not provided, generate one.
         if (posX == null || posY == null) {
-            let pos = findSpace(this.state.componentDicts, 13, 13, width, height);
+            console.log(this.dashboard.current)
+            let pos = findSpace(this.state.componentDicts, 1000, 2000, width, height);
             posX = pos[0];
-            posY = Infinity
+            posY = pos[1];
         }
         this.setState({
             componentDicts: this.state.componentDicts.concat({
@@ -98,7 +99,10 @@ export default class Dashboard extends React.Component {
             }
             //if  position not provided, generate one.
             if (d.posX == null || d.posY == null) {
-                let pos = findSpace(this.state.componentDicts.concat(componentsToAdd), 13, 13, d.width, d.height);
+                let pos = findSpace(this.state.componentDicts.concat(componentsToAdd), 1000,
+                    this.state.width, d.width, d.height
+                    )
+                ;
                 d.posX = pos[0];
                 d.posY = pos[1];
             }
@@ -120,6 +124,9 @@ export default class Dashboard extends React.Component {
     // componentDidUpdate(prevProps, prevState, snapshot) {
     //     this.scale();
     // }
+    onLayoutChange(args) {
+        console.log(args)
+    }
 
     scale(time) {
 
@@ -158,7 +165,7 @@ export default class Dashboard extends React.Component {
                                  ignoreElements={'.widget'}>
                     <DashboardGrid
                         ref={this.dashboard}
-
+                        onLayoutChange={this.onLayoutChange.bind(this)}
                         grid_config={this.props.grid_config ? {...this.props.grid_config, ...{scale: this.state.zoom}} : {scale: this.state.zoom}}
                         handleRemove={this.handleRemove}
                         handleCreate={this.handleCreate}

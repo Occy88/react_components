@@ -29,8 +29,8 @@ export default function GenericModelForm(types, api) {
          */
         constructor(props) {
             super(props)
-            console.log("GENERIC TEMPLATE INSTANTIATED ")
-            console.log(props)
+            // console.log("GENERIC TEMPLATE INSTANTIATED ")
+            // console.log(props)
             let data = {...types}
             Object.keys(data).forEach((key) => data[key] = '');
             this.state = ({
@@ -50,7 +50,7 @@ export default function GenericModelForm(types, api) {
         }
 
         componentDidMount() {
-            console.log("COMPONENT MOUNTED BINDING SET DATA===========")
+            // console.log("COMPONENT MOUNTED BINDING SET DATA===========")
             // this.props.setData ? this.props.setData(this.setData.bind(this)) : null
         }
 
@@ -67,7 +67,7 @@ export default function GenericModelForm(types, api) {
             this.setState({
                 sync: true
             })
-            console.log("SUBMITTING FORM")
+            // console.log("SUBMITTING FORM")
             this.state.data.id ?
                 api.update(this.state.data).then((d) => {
                     this.response(d)
@@ -77,23 +77,23 @@ export default function GenericModelForm(types, api) {
         }
 
         onDataChange(dict) {
-            console.log(this.state.data)
-            console.log(dict)
-            console.log("-----------------")
+            // console.log(this.state.data)
+            // console.log(dict)
+            // console.log("-----------------")
             this.setState({
                 data: {...this.state.data, ...dict}
             })
-            console.log(this.state.resetTimer)
-            console.log('_____________________timer: ')
+            // console.log(this.state.resetTimer)
+            // console.log('_____________________timer: ')
             this.props.submit_button ? null : this.state.resetTimer()
 
         }
 
         render() {
-            console.log("PROPS: ", this.props)
+            // console.log("PROPS: ", this.props)
             const forms = Object.keys(types).map((key, val) => {
                 val = types[key]
-                console.log(key, this.state.data[key]);
+                // console.log(key, this.state.data[key]);
                 return React.createElement(formFactory(val), {
                     data: this.state.data[key],
                     name: key,
@@ -103,7 +103,7 @@ export default function GenericModelForm(types, api) {
                 })
             })
             const loading_indicator = <LoadingIndicator loading={this.state.sync}/>
-            console.log("SETTING TIMEOUT TO : ", this.props.timeout)
+            // console.log("SETTING TIMEOUT TO : ", this.props.timeout)
             const idle_timer = <IdleTimerCustom
                 timer={1000 * 5}
                 throttle={1000}
@@ -114,10 +114,10 @@ export default function GenericModelForm(types, api) {
                 }}/>
             const submit_button = <Button text={'Submit'} onClick={this.submitForm.bind(this)}/>
 
-            console.log(submit_button)
-            console.log(loading_indicator)
-
-            console.log(forms)
+            // console.log(submit_button)
+            // console.log(loading_indicator)
+            //
+            // console.log(forms)
 
             return (
 

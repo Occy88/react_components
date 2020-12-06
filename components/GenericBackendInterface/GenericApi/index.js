@@ -19,7 +19,7 @@ export default class GenericApi {
      * @return {Promise<Response>}
      */
     get(filter_param_dict) {
-        console.log("GENERIC API FETCHING: ", jQuery.param(filter_param_dict), this.base_url)
+        // console.log("GENERIC API FETCHING: ", jQuery.param(filter_param_dict), this.base_url)
         return fetch(`${this.base_url}?${jQuery.param(filter_param_dict)}`, {
             method: 'GET',
         }).then(d => {
