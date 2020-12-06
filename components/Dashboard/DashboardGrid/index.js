@@ -34,7 +34,7 @@ export default class DashboardGrid extends React.Component {
         // let d = 1 - scale
         // d /= 2
         // scale = 1 - d
-        console.log("rendering: ", this.props.componentDicts)
+        console.log("rendering: ", this.props.component_dicts)
         console.log("scale:", this.props.grid_config.scale)
         console.log("GRID: ", this.Grid.current ? this.Grid.current : "NO GRID")
         return (
@@ -69,20 +69,20 @@ export default class DashboardGrid extends React.Component {
                     // onBreakpointChange={this.onBreakpointChange}
                     {...this.props}
                 >
-                    {this.props.componentDicts.map((componentDict, index) => {
+                    {this.props.component_dicts.map((comp, index) => {
                         return <div className={'widget'}
                             // itemevation={3}
-                                    key={componentDict.id}
+                                    key={comp.id}
                                     data-grid={{
-                                        i: componentDict.id,
-                                        x: componentDict.x,
-                                        y: componentDict.y,
-                                        h: componentDict.h,
-                                        w: componentDict.w
+                                        i: comp.id,
+                                        x: comp.x,
+                                        y: comp.y,
+                                        h: comp.h,
+                                        w: comp.w
                                     }}
                         >
 
-                            <BaseWidget componentDict={componentDict}
+                            <BaseWidget component_dict={comp}
                                         handleRemove={this.props.handleRemove}
                                         handleCreate={this.props.handleCreate}/>
                         </div>

@@ -28,7 +28,7 @@ export default class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            componentDicts: [],
+            component_dicts: [],
             zoom: 1
 
         };
@@ -63,12 +63,12 @@ export default class Dashboard extends React.Component {
         //if  position not provided, generate one.
         if (posX == null || posY == null) {
             console.log(this.dashboard.current)
-            let pos = findSpace(this.state.componentDicts, 1000, 2000, width, height);
+            let pos = findSpace(this.state.component_dicts, 1000, 2000, width, height);
             posX = pos[0];
             posY = pos[1];
         }
         this.setState({
-            componentDicts: this.state.componentDicts.concat({
+            component_dicts: this.state.component_dicts.concat({
                 component: component,
                 x: posX,
                 y: posY,
@@ -99,9 +99,9 @@ export default class Dashboard extends React.Component {
             }
             //if  position not provided, generate one.
             if (d.posX == null || d.posY == null) {
-                let pos = findSpace(this.state.componentDicts.concat(componentsToAdd), 1000,
-                    this.state.width, d.width, d.height
-                    )
+                let pos = findSpace(this.state.component_dicts.concat(componentsToAdd), 1000,
+                        this.state.width, d.width, d.height
+                        )
                 ;
                 d.posX = pos[0];
                 d.posY = pos[1];
@@ -117,15 +117,28 @@ export default class Dashboard extends React.Component {
             })
         }
         this.setState({
-            componentDicts: this.state.componentDicts.concat(componentsToAdd)
+            component_dicts: this.state.component_dicts.concat(componentsToAdd)
         })
     }
 
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     this.scale();
-    // }
+    /**
+     * This function assumes args are in the same order as the current listof dictionaries.
+     * @param args
+     */
     onLayoutChange(args) {
+        console.log("LAYOUT CHANGE===================")
         console.log(args)
+        let curr_layout = [...this.state.component_dicts]
+        console.log(curr_layout)
+        let i = 0
+        for (let d of args) {
+            curr_layout[i] = {...curr_layout[i], ...d}
+            i += 1
+        }
+
+        this.setState({
+            component_dicts: curr_layout
+        })
     }
 
     scale(time) {
@@ -146,34 +159,34 @@ export default class Dashboard extends React.Component {
      * @param {string} id the unique id of the component.
      */
     handleRemove(id) {
-        let new_dicts = _.reject(this.state.componentDicts, {id: id})
+        let new_dicts = _.reject(this.state.component_dicts, {id: id})
         this.setState({
-            componentDicts: new_dicts
+            component_dicts: new_dicts
         })
     };
 
     render() {
         return (
-            <div className='Dashboard'>
-                <div className={'zoomContainer'}>
-                    <div className={'zoomButtons'}>
-                        <Button text={'+'} onClick={() => this.zoom(0.1)}/>
-                        <Button text={'-'} onClick={() => this.zoom(-0.1)}/>
+                <div className='Dashboard'>
+                    <div className={'zoomContainer'}>
+                        <div className={'zoomButtons'}>
+                            <Button text={'+'} onClick={() => this.zoom(0.1)}/>
+                            <Button text={'-'} onClick={() => this.zoom(-0.1)}/>
+                        </div>
                     </div>
-                </div>
-                <ScrollContainer className="scroll-container"
-                                 ignoreElements={'.widget'}>
-                    <DashboardGrid
-                        ref={this.dashboard}
-                        onLayoutChange={this.onLayoutChange.bind(this)}
-                        grid_config={this.props.grid_config ? {...this.props.grid_config, ...{scale: this.state.zoom}} : {scale: this.state.zoom}}
-                        handleRemove={this.handleRemove}
-                        handleCreate={this.handleCreate}
-                        componentDicts={this.state.componentDicts}
-                    />
-                </ScrollContainer>
+                    <ScrollContainer className="scroll-container"
+                                     ignoreElements={'.widget'}>
+                        <DashboardGrid
+                                ref={this.dashboard}
+                                onLayoutChange={this.onLayoutChange.bind(this)}
+                                grid_config={this.props.grid_config ? {...this.props.grid_config, ...{scale: this.state.zoom}} : {scale: this.state.zoom}}
+                                handleRemove={this.handleRemove}
+                                handleCreate={this.handleCreate}
+                                component_dicts={this.state.component_dicts}
+                        />
+                    </ScrollContainer>
 
-            </div>
+                </div>
         );
     }
 }

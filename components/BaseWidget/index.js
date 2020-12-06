@@ -17,13 +17,13 @@ class BaseWidget extends React.Component {
             width: "20px",
             float: "right"
         };
-        const element = React.createElement(this.props.componentDict.component, Object.assign({}, this.props, this.props.componentDict.props));
+        const element = React.createElement(this.props.component_dict.component, Object.assign({}, this.props, this.props.component_dict.props));
         // Create the interior of any given widget to be displayed.
         return ([
                 <div className={'remove'}>
                     <Button
                         onClick={() => {
-                            this.props.handleRemove(this.props.componentDict.id)
+                            this.props.handleRemove(this.props.component_dict.id)
                         }}
                         image={STATIC_URL + thin_black_cross}
                         style={button_style}>
